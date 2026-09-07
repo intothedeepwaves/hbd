@@ -87,13 +87,24 @@
     position: relative;
     width: 100%;
     aspect-ratio: 4 / 5;
-    background: #333 url("https://placehold.co/640x800/222/888?text=%EC%B9%B4%EB%B2%84+%EC%9D%B4%EB%AF%B8%EC%A7%80") center/cover;
+    background: #333;
+    overflow: hidden;
+  }
+
+  .main-card .media > img.bg-img{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
   }
 
   .media-top{
     position: absolute;
     top: 14px;
     left: 14px;
+    z-index: 1;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -103,9 +114,10 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: #ddd center/cover;
-    background-image: url("https://placehold.co/80x80/ddd/555?text=%40");
+    object-fit: cover;
+    background: #ddd;
     flex-shrink: 0;
+    display: block;
   }
 
   .media-top .names{
@@ -127,6 +139,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 1;
     width: 64px;
     height: 46px;
     background: var(--accent);
@@ -149,6 +162,7 @@
     left: 14px;
     right: 14px;
     bottom: 14px;
+    z-index: 1;
   }
 
   .media-title{
@@ -231,12 +245,7 @@
     aspect-ratio: 3 / 4;
     object-fit: cover;
     display: block;
-  }
-
-  .grid-card .caption{
-    padding: 10px;
-    font-size: 13px;
-    color: var(--muted);
+    border-radius: 14px;
   }
 </style>
 </head>
@@ -269,18 +278,23 @@
 
   <!-- ============================================================
        3) 메인 콘텐츠 카드
-       - .media 배경 이미지(위 CSS의 .main-card .media)를 원하는
-         이미지 URL로 바꾸면 썸네일이 교체됩니다.
-       - .avatar 배경 이미지도 동일하게 교체 가능합니다.
+       - 배경 썸네일: 아래 <img class="bg-img"> 의 src를 원하는
+         이미지 URL로 바꾸세요.
+       - 프로필 사진: <img class="avatar"> 의 src를 원하는
+         이미지 URL로 바꾸세요.
+       - 채널 이름 / 아이디: .channel-name, .handle 안의 텍스트를
+         원하는 내용으로 바꾸세요.
        - "재생" / "내가 찜한 리스트" 버튼의 href와 텍스트를 바꾸세요.
   ============================================================= -->
   <article class="main-card">
     <div class="media">
+      <img class="bg-img" src="https://placehold.co/640x800/222/888?text=%EC%B9%B4%EB%B2%84+%EC%9D%B4%EB%AF%B8%EC%A7%80" alt="썸네일 이미지">
+
       <div class="media-top">
-        <div class="avatar"></div>
+        <img class="avatar" src="https://placehold.co/80x80/ddd/555?text=%40" alt="프로필 사진">
         <div class="names">
-          <div class="channel-name">채널 이름</div>
-          <div class="handle">handle_id</div>
+          <div class="러브래또">채널 이름</div>
+          <div class="dohoonnam">handle_id</div>
         </div>
       </div>
 
@@ -289,9 +303,9 @@
       <div class="media-bottom">
         <p class="media-title">TITLE</p>
         <div class="media-tags">
-          <span>태그1</span>
-          <span>태그2</span>
-          <span>태그3</span>
+          <span>감동적</span>
+          <span>사랑스러운</span>
+          <span>로맨틱한</span>
         </div>
       </div>
     </div>
@@ -303,23 +317,20 @@
   </article>
 
   <!-- ============================================================
-       4) 지금 뜨는 콘텐츠 (하단 카드 2개)
+       4) 지금 뜨는 콘텐츠 (하단 카드 2개, 이미지만)
        - 섹션 제목 텍스트 수정 가능
        - 각 카드는 <a> 태그이므로 href를 링크로 바꾸면
          카드를 눌렀을 때 이동합니다.
        - img src를 원하는 이미지 URL로 교체하세요.
-       - caption 텍스트도 자유롭게 수정하세요.
   ============================================================= -->
   <section>
     <h2 class="section-title">지금 뜨는 콘텐츠</h2>
     <div class="grid">
       <a class="grid-card" href="#" target="_blank" rel="noopener">
         <img src="https://placehold.co/450x600/222/888?text=%EC%9D%B4%EB%AF%B8%EC%A7%80+1" alt="콘텐츠 1">
-        <div class="caption">콘텐츠 제목 1</div>
       </a>
       <a class="grid-card" href="#" target="_blank" rel="noopener">
         <img src="https://placehold.co/450x600/222/888?text=%EC%9D%B4%EB%AF%B8%EC%A7%80+2" alt="콘텐츠 2">
-        <div class="caption">콘텐츠 제목 2</div>
       </a>
     </div>
   </section>
